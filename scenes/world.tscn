@@ -103,9 +103,9 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=25]
 
-[sub_resource type="Curve2D" id=19]
+[sub_resource type="Curve2D" id=26]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -496, -288, 0, 0, 0, 0, 496, -288, 0, 0, 0, 0, 496, 288, 0, 0, 0, 0, -496, 288, 0, 0, 0, 0, -496, -288 )
 }
@@ -169,18 +169,18 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="collision" type="CollisionShape2D" parent="UserInput/shield/body"]
-shape = SubResource( 18 )
+shape = SubResource( 25 )
 disabled = true
 
 [node name="spawningPath" type="Path2D" parent="."]
-curve = SubResource( 19 )
+curve = SubResource( 26 )
 
 [node name="spawnLocation" type="PathFollow2D" parent="spawningPath"]
 position = Vector2( -496, -288 )
 rotation = -7.80847e-06
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.33
 autostart = true
 
 [node name="bulletPool" type="Node2D" parent="."]

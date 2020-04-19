@@ -16,13 +16,19 @@ func _process(_delta):
 func _physics_process(delta):
 	var collision : KinematicCollision2D = move_and_collide(_velocity*delta)
 	if collision:
-		if collision.collider.has_method("hit"):
-			collision.collider.hit()
 		if _nbBounce < maxBounce:
 			rotation = _velocity.bounce(collision.normal).angle()
 			_nbBounce += 1
 		else:
-			queue_free()
+			$AnimatedSprite.animation = "explode"
+		if collision.collider.has_method("hit"):
+			$AnimatedSprite.animation = "explode"
+			collision.collider.hit()
 
 func _on_visibility_screen_exited():
 	queue_free()
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "explode":
+		queue_free()
